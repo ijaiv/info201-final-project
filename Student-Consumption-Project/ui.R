@@ -12,17 +12,30 @@ library(shiny)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
+  tags$head(
+    tags$style(HTML("
+                    @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
+                    
+                    h1 {
+                    font-family: 'Apple chancery';
+                    font-weight: 600;
+                    line-height: 1.1;
+                    color: #4d3a7d;
+                    }
+                    "))
+    ),  
+  
   # Application title
-  titlePanel("Data Analysis: Student Alcohol Consumption"),
+  headerPanel("Data Analysis: Student Alcohol Consumption"),
 
-    
-    # Show a plot of the generated distribution
     mainPanel(
        tabsetPanel(
-         tabPanel("Home", verbatimTextOutput("Overview")),
-         tabPanel("Workday Alcohol Consumption: Male vs. Female", plotOutput("plot1")),
-         tabPanel("Academic Failure Plot", plotOutput("plot2")),
-         tabPanel("Student Health", plotOutput("plot3"))
+         tabPanel("Home", htmlOutput("Overview")),
+         tabPanel("Absences vs. Grades", plotOutput("plot1"),
+                  plotOutput("plot2"), 
+                  plotOutput("plot3")),
+         tabPanel("Academic Failure Plot", plotOutput("plot4")),
+         tabPanel("Student Health", plotOutput("plot5"))
        )
     )
   )
