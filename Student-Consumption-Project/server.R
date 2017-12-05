@@ -7,9 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 
-library(dplyr)
 library(ggplot2)
-library(gridExtra)
 library(shiny)
 
 # Define server logic required to draw a histogram
@@ -34,18 +32,15 @@ shinyServer(function(input, output) {
   data <- read.csv(file = 'Data/student-mat.csv', stringsAsFactors = FALSE)
   
   output$plot1 <- renderPlot({
-    x <- ggplot(data, aes(G1, absences)) + geom_point(aes(col=sex)) + ggtitle("Absences vs. First Period Grade")
-    print(x)
+    ggplot(data, aes(G1, absences)) + geom_point(aes(col=sex)) + ggtitle("Absences vs. First Period Grade")
   })
   
   output$plot2 <- renderPlot({
-    y <- ggplot(data, aes(G2, absences)) + geom_point(aes(col=sex)) + ggtitle("Absences vs. Second Period Grade")
-    print(y)
+    ggplot(data, aes(G2, absences)) + geom_point(aes(col=sex)) + ggtitle("Absences vs. Second Period Grade")
   })
   
   output$plot3 <- renderPlot({
-    z <- ggplot(data, aes(G3, absences)) + geom_point(aes(col=sex)) + ggtitle("Absences vs. Third Period Grade")
-    print(z)
+    ggplot(data, aes(G3, absences)) + geom_point(aes(col=sex)) + ggtitle("Absences vs. Third Period Grade")
   })
   
   #How do academic failures be attributed to the amount of paid classes? 

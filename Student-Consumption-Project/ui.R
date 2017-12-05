@@ -31,12 +31,11 @@ shinyUI(fluidPage(
     mainPanel(
        tabsetPanel(
          tabPanel("Home", htmlOutput("Overview")),
-         tabPanel("Absences vs. Grades", plotOutput("plot1"),
-                  plotOutput("plot2"), 
-                  plotOutput("plot3")),
+         tabPanel("Absences vs. Grades", plotOutput("plot1"), plotOutput("plot2"), plotOutput("plot3")),
          tabPanel("Academic Failure Plot", plotOutput("plot4")),
          tabPanel("Student Health", plotOutput("plot5"))
        )
     )
+  
   )
 )
