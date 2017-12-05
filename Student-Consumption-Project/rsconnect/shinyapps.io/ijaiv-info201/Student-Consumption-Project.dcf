@@ -1,0 +1,13 @@
+name: Student-Consumption-Project
+title: Student-Consumption-Project
+username:
+account: ijaiv-info201
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 244719
+bundleId: 1117280
+url: https://ijaiv-info201.shinyapps.io/Student-Consumption-Project/
+when: 1512502915.31887
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Question2_Function.R|Question3_Function.R

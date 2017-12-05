@@ -8,9 +8,10 @@
 #
 
 library(shiny)
+library(shinythemes)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+shinyUI(fluidPage(theme = shinytheme('cyborg'),
   
   tags$head(
     tags$style(HTML("
@@ -31,9 +32,33 @@ shinyUI(fluidPage(
     mainPanel(
        tabsetPanel(
          tabPanel("Home", htmlOutput("Overview")),
-         tabPanel("Absences vs. Grades", plotOutput("plot1"), plotOutput("plot2"), plotOutput("plot3")),
-         tabPanel("Academic Failure Plot", plotOutput("plot4")),
-         tabPanel("Student Health", plotOutput("plot5"))
+         tabPanel("Absences vs. Grades", htmlOutput("Summary"), plotOutput("plot1"),
+                  selectInput("Plots", label = "Choose a Plot", 
+                                                     choices = list('Absences vs. G1', 'Absences vs. G2', 'Absences vs. G3'))
+                  ),
+         tabPanel("Academic Failure Plot", 
+                  htmlOutput("Description1"),
+                  plotOutput("plot4"),
+                  radioButtons('option1',
+                               "Plot By:",
+                               c("Paid For Classes" = "paid",
+                                 "Had School Support" = "schoolsup",
+                                 "Had Family Support" = "famsup",
+                                 "In A Relationship" = "romantic")
+                               
+                  )
+                  ),
+         tabPanel("Student Health", htmlOutput("Description2"), plotOutput("plot5"),
+                  radioButtons('option2',
+                                                 "Plot By:",
+                                                 c("5 Drinks/Week" = "5",
+                                                   "4 Drinks/Week" = "4",
+                                                   "3 Drinks/Week" = "3",
+                                                   "2 Drinks/Week" = "2",
+                                                   "1 Drink/Week" = "1"
+                                                 )
+         )
+                  )
        )
     )
   
