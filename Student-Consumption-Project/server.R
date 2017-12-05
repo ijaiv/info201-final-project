@@ -73,19 +73,19 @@ shinyServer(function(input, output) {
   
   })
   
-  output$Description2 <- renderUI({
+  output$Description1 <- renderUI({
     HTML(paste("This graph depicts how the amount of classes failed by students who consume alcohol
-               is affected by certain traits:
-               1. If they paid for classes
-               2. If they had major school support
-               3. If they had major family support
-               4, If they were in a relationship
+               is affected by certain traits:", sep = "<br/>",
+               "1. If they paid for classes",
+               "2. If they had major school support",
+               "3. If they had major family support",
+               "4, If they were in a relationship"
                
-               "
+               
     ))
   })
   
-  output$Description1 <- renderUI({
+  output$Description2 <- renderUI({
     HTML(paste("This graph depicts the health of students who consume alcohol on a range of 1 to 5,
                with 1 being very poor health, and 5 being no health issues. The amount of classes 
                failed is then measured based on each health category, showing how the health of students
