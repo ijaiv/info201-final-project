@@ -50,15 +50,49 @@ shinyServer(function(input, output) {
   
   #How do academic failures be attributed to the amount of paid classes? 
   #Academic failures are presented as a numeric number while paid classes are a binary (yes or no) question.
-  output$plot2 <- renderPlot({
-    
+  output$plot4 <- renderPlot({
+    a <-   ggplot(data, aes(failures)) +   
+      geom_bar(aes_string(fill = input$option1), position = "dodge") + ggtitle("Failures vs. Paid Classes")
+    print(a)
   })
   
   #How does the health of a students affected by alcohol relate to their success.
-  output$plot3 <- renderPlot({
+  output$plot5 <- renderPlot({
+    ## Filter data to only the amount of drinks per week given to the
+    ## function
+    alcohol.data <- data %>% filter(Walc == input$option2)
     
+    ## Allow failures column to be read by ggplot and used for fill colors
+    alcohol.data$failures <- as.character(alcohol.data$failures)
+    
+    ## Create the graph
+    ggplot(data = alcohol.data) +
+      geom_bar(mapping = aes(x = health, fill = failures), position = "dodge",
+               width = .8) + ggtitle("Health vs. Success")
+  
+  
   })
   
+  output$Description2 <- renderUI({
+    HTML(paste("This graph depicts how the amount of classes failed by students who consume alcohol
+               is affected by certain traits:
+               1. If they paid for classes
+               2. If they had major school support
+               3. If they had major family support
+               4, If they were in a relationship
+               
+               "
+    ))
+  })
   
+  output$Description1 <- renderUI({
+    HTML(paste("This graph depicts the health of students who consume alcohol on a range of 1 to 5,
+               with 1 being very poor health, and 5 being no health issues. The amount of classes 
+               failed is then measured based on each health category, showing how the health of students
+               affects their performance. The radio buttons filter the data, showing information for students
+               who drink a certain amount of alcohol per week.
+               "
+    ))
+  })
   
 })

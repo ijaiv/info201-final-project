@@ -34,8 +34,29 @@ shinyUI(fluidPage(
          tabPanel("Absences vs. Grades", plotOutput("plot1"),
                   plotOutput("plot2"), 
                   plotOutput("plot3")),
-         tabPanel("Academic Failure Plot", plotOutput("plot4")),
-         tabPanel("Student Health", plotOutput("plot5"))
+         tabPanel("Academic Failure Plot", plotOutput("plot4"), htmlOutput("Description1"),
+                  radioButtons('option1',
+                               "Plot By:",
+                               c("Paid For Classes" = "paid",
+                                 "Had School Support" = "schoolsup",
+                                 "Had Family Support" = "famsup",
+                                 "In A Relationship" = "romantic")
+                               
+                  )
+                  ),
+         tabPanel("Student Health", plotOutput("plot5"), htmlOutput("Description2"),
+                  radioButtons('option2',
+                               "Plot By:",
+                               c("5 Drinks/Week" = "5",
+                                 "4 Drinks/Week" = "4",
+                                 "3 Drinks/Week" = "3",
+                                 "2 Drinks/Week" = "2",
+                                 "1 Drink/Week" = "1"
+                                 )
+                  
+                               )
+                    
+                  )
        )
     )
   )
