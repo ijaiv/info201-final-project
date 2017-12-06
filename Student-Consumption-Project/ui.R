@@ -57,8 +57,10 @@ shinyUI(fluidPage(theme = shinytheme('cyborg'),
                                                    "2 Drinks/Week" = "2",
                                                    "1 Drink/Week" = "1"
                                                  )
-         )
                   )
+                  ),
+         tabPanel("Raw Data", h2("Student Alcohol Consumption Rate"),htmlOutput("Description3"), dataTableOutput("Table"))
+         
        )
     )
   
